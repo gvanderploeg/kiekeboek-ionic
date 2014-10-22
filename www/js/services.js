@@ -1,20 +1,15 @@
-angular.module('starter.services', [])
+angular.module('kiekeboek.services', [])
 
-.factory('personService', function($http) {
+.factory('personService', ['$http', 'fkDataService', function($http, fkDataService) {
 
     var persons = [];
-
-    var personPromise = $http.get('/data/kiekeboek_seed.json')
-    .then(function(data) {
-      persons = data.data.data;
-      console.table(persons);
-    });
 
     var withdata = function(callback) {
       if (persons.length > 0) {
         callback(persons);
       } else {
-        personPromise.then(function () {
+        fkDataService.getData(function (data) {
+          persons = data;
           callback(persons);
         });
       }
@@ -33,4 +28,4 @@ angular.module('starter.services', [])
       });
     }
   }
-});
+}]);

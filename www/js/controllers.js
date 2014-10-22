@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('kiekeboek.controllers', [])
 
 .controller('SearchCtrl', function($scope, personService) {
 
@@ -6,7 +6,7 @@ angular.module('starter.controllers', [])
 
     $scope.searchFilter = function (person) {
       var re = new RegExp($scope.search.term, 'i');
-      return re.test(person.roepnaam) || re.test(person.achternaam_met_tussenvoegsel);
+      return re.test(person.roepnaam + " " + person.achternaam_met_tussenvoegsel);
     };
 
     personService.all(function(persons) {
