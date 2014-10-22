@@ -1,26 +1,36 @@
 angular.module('starter.services', [])
 
-/**
- * A simple example service that returns some data.
- */
-.factory('Friends', function() {
-  // Might use a resource here that returns a JSON array
+.factory('personService', function($http) {
 
-  // Some fake testing data
-  var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
-  ];
+    var persons = [];
+
+    var personPromise = $http.get('/data/kiekeboek_seed.json')
+    .then(function(data) {
+      persons = data.data.data;
+      console.table(persons);
+    });
+
+    var withdata = function(callback) {
+      if (persons.length > 0) {
+        callback(persons);
+      } else {
+        personPromise.then(function () {
+          callback(persons);
+        });
+      }
+    };
 
   return {
-    all: function() {
-      return friends;
+    all: function(callback) {
+      withdata(function(persons) {
+        callback(persons);
+    });
     },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
+
+    get: function(personId, callback) {
+      withdata(function(persons) {
+        callback(persons[personId]);
+      });
     }
   }
 });

@@ -1,15 +1,21 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('SearchCtrl', function($scope, personService) {
+    personService.all(function(persons) {
+      $scope.personList = persons;
+    });
+
+    $scope.searchFilter = function (person) {
+      var re = new RegExp($scope.searchTerm, 'i');
+      console.log($scope.searchTerm);
+      return re.test(person.roepnaam) || re.test(person.achternaam);
+    };
 })
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
-})
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
-})
+.controller('PersonCtrl', function($scope, $stateParams, personService) {
 
-.controller('AccountCtrl', function($scope) {
+    personService.get($stateParams.id, function(person) {
+      $scope.person = person;
+    })
 });
