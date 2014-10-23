@@ -9,13 +9,13 @@ angular.module('kiekeboek.controllers', [])
       return re.test(person.roepnaam + " " + person.achternaam_met_tussenvoegsel);
     };
 
-    //$ionicLoading.show({
-    //  template: 'Gegevens ophalen... <i class="icon ion-loading-c"></i>'
-    //});
+    $ionicLoading.show({
+      template: 'Gegevens ophalen... <i class="icon ion-loading-c"></i>'
+    });
 
     personService.all(function(persons) {
       $scope.personList = persons;
-      //$ionicLoading.hide();
+      $ionicLoading.hide();
     });
 
 })

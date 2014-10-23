@@ -1,6 +1,6 @@
 angular.module('kiekeboek.services', [])
 
-.factory('personService', ['$http', 'fkDataService', '$ionicPopup', function($http, fkDataService, $ionicPopup) {
+.factory('personService', ['$http', 'fkDataService', function($http, fkDataService) {
 
     var personsMap = {},
       personsArray = [];
@@ -11,7 +11,6 @@ angular.module('kiekeboek.services', [])
         callback(personsArray);
       } else {
         fkDataService.getData(function (data) {
-          $ionicPopup.alert({template: 'withData: got data: ' + data.length});
           angular.forEach(data, function(value, key) {
             this[value.persoonid] = value;
           }, personsMap);
