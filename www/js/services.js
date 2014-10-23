@@ -1,31 +1,43 @@
 angular.module('kiekeboek.services', [])
 
-.factory('personService', ['$http', 'fkDataService', function($http, fkDataService) {
+.factory('personService', ['$http', 'fkDataService', '$ionicPopup', function($http, fkDataService, $ionicPopup) {
 
-    var persons = [];
+    var personsMap = {},
+      personsArray = [];
 
     var withdata = function(callback) {
-      if (persons.length > 0) {
-        callback(persons);
+
+      if (personsArray.length > 0) {
+        callback(personsArray);
       } else {
         fkDataService.getData(function (data) {
-          persons = data;
-          callback(persons);
+          $ionicPopup.alert({template: 'withData: got data: ' + data.length});
+          angular.forEach(data, function(value, key) {
+            this[value.persoonid] = value;
+          }, personsMap);
+
+          personsArray = data;
+          callback(personsArray);
         });
       }
     };
 
   return {
     all: function(callback) {
-      withdata(function(persons) {
-        callback(persons);
+      withdata(function(personsArray) {
+        callback(personsArray);
     });
     },
 
     get: function(personId, callback) {
-      withdata(function(persons) {
-        callback(persons[personId]);
+      if (personsArray.length > 0) {
+        callback(personsMap[personId]);
+      }
+      else {
+      withdata(function(personsArray) {
+        callback(personsMap[personId]);
       });
+      }
     }
   }
 }]);
