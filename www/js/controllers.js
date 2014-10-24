@@ -7,7 +7,7 @@ angular.module('kiekeboek.controllers', [])
     $scope.searchFilter = function (person) {
 
       // No search results for small terms
-      if ($scope.search.term.length < 2) {
+      if (!$scope.search.term || $scope.search.term.length < 2) {
         return false;
       }
       var re = new RegExp($scope.search.term, 'i');
@@ -30,7 +30,24 @@ angular.module('kiekeboek.controllers', [])
 
     personService.get($stateParams.id, function(person) {
       $scope.person = person;
-    })
+      
+    });
+            
+            $scope.normalizePhoneNr = function(nr) {
+            if (typeof nr === undefined) {
+                return undefined;
+            }
+            
+            if (/^0[^0]/.test(nr)) {
+                    nr = nr.replace(/^0/, '+31');
+            } else {
+                nr = '+3123' + nr;
+            }
+            
+                console.log("f:" + nr);
+                return nr;
+            }
+            
 })
 .controller('AccountCtrl', function ($scope, $stateParams, accountService) {
 

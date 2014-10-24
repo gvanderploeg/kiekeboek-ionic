@@ -9,16 +9,21 @@
         <p>{{person.geboortedatum}}</p>
       </div>
       
+      <!-- todo: format this properly -->
+      <div class="list item">
+          <i class="icon ion-ios7-telephone"></i> {{normalizePhoneNr(person.mobiel)}}
+      </div>
+      
       <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="tel:{{persoon.mobiel}}">
+        <a class="tab-item" href="tel:{{normalizePhoneNr(person.mobiel)}}">
           <i class="icon ion-ios7-telephone"></i>
           Bel mobiel
         </a>
-        <a class="tab-item" href="sms:{{persoon.mobiel}}">
+        <a class="tab-item" href="sms:{{normalizePhoneNr(person.mobiel)}}">
           <i class="icon ion-chatbox"></i>
           Stuur bericht
         </a>
-        <a class="tab-item" href="callto:{{persoon.mobiel}}">
+        <a class="tab-item" href="callto:{{normalizePhoneNr(person.mobiel)}}">
           <i class="icon ion-social-skype"></i>
           Bel met Skype
         </a>
@@ -26,7 +31,5 @@
 
     </div>
 
-
-    {{person.roepnaam}} {{person.achternaam_met_tussenvoegsel}}
   </ion-content>
 </ion-view>
