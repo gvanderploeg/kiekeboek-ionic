@@ -1,19 +1,21 @@
-<ion-view title="{{person.roepnaam}} {{person.achternaam_met_tussenvoegsel}}">
+<ion-view>
   <ion-content has-header="true" padding="true">
 
     <div class="list card">
 
       <div class="item item-avatar">
-        <img src="http://www.fonteinkerkhaarlem.nl/intranet/photos/show_thumb/{{person.persoonid}}">
+        <img ng-src="http://www.fonteinkerkhaarlem.nl/intranet/photos/show_thumb/{{person.persoonid}}">
         <h2>{{person.roepnaam}} {{person.achternaam_met_tussenvoegsel}}</h2>
-        <p>{{person.geboortedatum}}</p>
       </div>
-      
+
       <!-- todo: format this properly -->
-      <div class="list item">
+      <div class="item item-icon-left">
           <i class="icon ion-ios7-telephone"></i> {{normalizePhoneNr(person.mobiel)}}
       </div>
-      
+      <div class="item item-icon-left">
+          <i class="icon ion-calendar"></i> {{person.geboortedatum}}
+      </div>
+
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="tel:{{normalizePhoneNr(person.mobiel)}}">
           <i class="icon ion-ios7-telephone"></i>

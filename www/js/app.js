@@ -45,21 +45,21 @@ angular.module('kiekeboek', ['ionic', 'kiekeboek.controllers', 'kiekeboek.servic
         }
       }
     })
+    .state('tab.person', {
+      url: '/person/:id',
+      views: {
+        'tab-search': {
+          templateUrl: 'templates/person-detail.html',
+          controller: 'PersonCtrl'
+        }
+      }
+    })
     .state('tab.account', {
       url: '/account',
       views: {
         'tab-account': {
           templateUrl: 'templates/tab-account.html',
           controller: 'AccountCtrl'
-        }
-      }
-    })
-    .state('tab.person', {
-      url: '/person/:id',
-      views: {
-        'tab-friends': {
-          templateUrl: 'templates/person-detail.html',
-          controller: 'PersonCtrl'
         }
       }
     });

@@ -52,7 +52,6 @@ angular.module('kiekeboek').service('fkDataService', function fkDataService($htt
     };
 
   return {
-    // TODO: proper caching (in localstorage?)
     getData: function (callback) {
       hasLoggedIn || login(function() {
         getDataRemote(callback);
