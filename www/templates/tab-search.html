@@ -7,11 +7,15 @@
       </label>
 
       <ion-list>
-        <ion-item ng-repeat="(persoonid, person) in personList | filter:searchFilter | orderBy:achternaam:reverse | limitTo:10" class="thumbnail-left" type="item-text-wrap" href="#/tab/person/{{person.persoonid}}">
+        <ion-item  ng-repeat="(persoonid, person) in filteredList = ( personList | filter:searchFilter | orderBy:achternaam:reverse | limitTo:20)" class="thumbnail-left" type="item-text-wrap" href="#/tab/person/{{person.persoonid}}">
           <i class="icon ion-person"></i>
-          {{person.persoonid}} {{person.roepnaam}} {{person.achternaam_met_tussenvoegsel}}
+          {{person.roepnaam}} {{person.achternaam_met_tussenvoegsel}}
         </ion-item>
       </ion-list>
+
+
+      <div ng-hide="filteredList.length">{{personList.length}} personen</div>
+
     </div>
   </ion-content>
 </ion-view>

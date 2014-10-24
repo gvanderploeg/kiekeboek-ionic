@@ -5,6 +5,11 @@ angular.module('kiekeboek.controllers', [])
     $scope.search = {};
 
     $scope.searchFilter = function (person) {
+
+      // No search results for small terms
+      if ($scope.search.term.length < 2) {
+        return false;
+      }
       var re = new RegExp($scope.search.term, 'i');
       return re.test(person.roepnaam + " " + person.achternaam_met_tussenvoegsel);
     };
