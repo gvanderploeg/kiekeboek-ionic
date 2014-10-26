@@ -3,17 +3,27 @@
 
     <div class="list card">
 
-      <div class="item item-avatar">
+      <div class="item item-thumbnail-left">
         <img ng-src="http://www.fonteinkerkhaarlem.nl/intranet/photos/show_thumb/{{person.persoonid}}">
         <h2>{{person.roepnaam}} {{person.achternaam_met_tussenvoegsel}}</h2>
       </div>
 
       <!-- todo: format this properly -->
+
       <div class="item item-icon-left">
           <i class="icon ion-ios7-telephone"></i> {{normalizePhoneNr(person.mobiel)}}
       </div>
       <div class="item item-icon-left">
+          <i class="icon ion-pinpoint"></i> <span>{{person.straat}}, {{person.postcode}} {{person.plaats}}</span>
+      </div>
+      <div class="item item-icon-left">
           <i class="icon ion-calendar"></i> {{person.geboortedatum}}
+      </div>
+      <div class="item item-icon-left">
+          <i class="icon ion-email"></i> {{person.emailadres}}
+      </div>
+      <div class="item item-icon-left">
+          <i class="icon ion-person-stalker"></i> Kleine groep: {{person.kleine_groep}}
       </div>
 
       <div class="item tabs tabs-secondary tabs-icon-left">

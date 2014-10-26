@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.kiekeboek602727" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.geertvanderploeg.kiekeboek.kiekeboek-ionic" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>kiekeboek</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
+    Kiekeboek van de Fonteinkerk, Haarlem
+  </description>
+  <author email="geertpl@gmail.com" href="http://www.geertvanderploeg.com">
+    Geert van der Ploeg
+  </author>
   <content src="index.html"/>
   <access origin="http://www.fonteinkerkhaarlem.nl"/>
   <preference name="webviewbounce" value="false"/>

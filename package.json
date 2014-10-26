@@ -1,7 +1,7 @@
 {
   "name": "kiekeboek",
   "version": "1.0.0",
-  "description": "kiekeboek: An Ionic project",
+  "description": "Kiekeboek voor de Fonteinkerk, Haarlem",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
