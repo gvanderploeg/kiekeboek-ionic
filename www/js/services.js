@@ -43,11 +43,11 @@ angular.module('kiekeboek.services', [])
           callback(persons);
         } else {
           logger.log("Getting data from fkDataService");
-          fkDataService.getData(function (data) {
+          fkDataService.getData(function (persons) {
             logger.log("Caching in local storage and mem");
-            cacheInLocalStorage(data);
-            cacheInMemory(data);
-            callback(data);
+            cacheInLocalStorage(persons);
+            cacheInMemory(persons);
+            callback(persons);
           });
         }
       }
@@ -62,11 +62,7 @@ angular.module('kiekeboek.services', [])
     },
 
     get: function(personId, callback) {
-      if (personsArray.length > 0) {
-        callback(personsMap[personId]);
-      }
-      else {
-      withdata(function(personsArray) {
+      withdata(function() {
         callback(personsMap[personId]);
       });
       }
