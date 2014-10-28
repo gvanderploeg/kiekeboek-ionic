@@ -10,6 +10,9 @@
   </author>
   <content src="index.html"/>
   <access origin="http://www.fonteinkerkhaarlem.nl"/>
+  <!-- for weinre -->
+  <access origin="http://192.168.50.63:8080"/>
+
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

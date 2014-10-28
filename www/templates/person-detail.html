@@ -10,8 +10,8 @@
 
       <!-- todo: format this properly -->
 
-      <div class="item item-icon-left">
-          <i class="icon ion-ios7-telephone"></i> {{normalizePhoneNr(person.mobiel)}}
+      <div class="item item-icon-left" ng-click="call()">
+        <i class="icon ion-ios7-telephone"></i> {{normalizePhoneNr(person.mobiel)}}
       </div>
       <div class="item item-icon-left">
           <i class="icon ion-pinpoint"></i> <span>{{person.straat}}, {{person.postcode}} {{person.plaats}}</span>
@@ -26,23 +26,16 @@
           <i class="icon ion-person-stalker"></i> Kleine groep: {{person.kleine_groep}}
       </div>
 
-      <!--
-      <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="tel:{{normalizePhoneNr(person.mobiel)}}">
+      <div class="item tabs tabs-secondary tabs-icon-top">
+        <a class="tab-item" ng-click="call()">
           <i class="icon ion-ios7-telephone"></i>
           Bel mobiel
         </a>
-        <a class="tab-item" href="sms:{{normalizePhoneNr(person.mobiel)}}">
+        <a class="tab-item" ng-click="text()">
           <i class="icon ion-chatbox"></i>
           Stuur bericht
         </a>
-        <a class="tab-item" href="callto:{{normalizePhoneNr(person.mobiel)}}">
-          <i class="icon ion-social-skype"></i>
-          Bel met Skype
-        </a>
       </div>
-      -->
     </div>
-
   </ion-content>
 </ion-view>

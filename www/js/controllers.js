@@ -1,6 +1,6 @@
 angular.module('kiekeboek.controllers', [])
 
-.controller('SearchCtrl', function($scope, personService, $ionicLoading) {
+.controller('SearchCtrl', function($scope, personService, $ionicLoading, logger) {
 
     $scope.search = {};
 
@@ -15,7 +15,7 @@ angular.module('kiekeboek.controllers', [])
     };
 
     $ionicLoading.show({
-      template: 'Gegevens ophalen... <i class="icon ion-loading-c"></i>'
+      template: 'Gegevens ophalen... <i class="icon ion-loading-c"></i>',
     });
 
     personService.all(function(persons) {
@@ -26,34 +26,44 @@ angular.module('kiekeboek.controllers', [])
 })
 
 
-.controller('PersonCtrl', function($scope, $stateParams, personService) {
+.controller('PersonCtrl', function($scope, $stateParams, personService, $window, logger) {
 
     personService.get($stateParams.id, function(person) {
       $scope.person = person;
-      
+
     });
-            
-            $scope.normalizePhoneNr = function(nr) {
-            if (typeof nr === undefined) {
-                return undefined;
-            }
-            
-            if (/^0[^0]/.test(nr)) {
-                    nr = nr.replace(/^0/, '+31');
-            } else {
-                nr = '+3123' + nr;
-            }
-            
-                console.log("f:" + nr);
-                return nr;
-            }
-            
+
+    $scope.normalizePhoneNr = function (nr) {
+      if (typeof nr === undefined || nr === '') {
+        return undefined;
+      }
+
+      if (/^0[^0]/.test(nr)) {
+        nr = nr.replace(/^0/, '+31');
+      } else {
+        nr = '+3123' + nr;
+      }
+      return nr;
+    }
+
+    $scope.call = function() {
+      logger.log("Calling " + this.person.mobiel);
+      $window.open('tel:' + $scope.normalizePhoneNr(this.person.mobiel), '_system');
+      return false;
+    };
+    $scope.text = function() {
+      logger.log("Texting " + this.person.mobiel);
+      $window.open('sms:' + $scope.normalizePhoneNr(this.person.mobiel), '_system');
+      return false;
+    };
 })
-.controller('AccountCtrl', function ($scope, $stateParams, accountService) {
+.controller('AccountCtrl', function ($scope, $stateParams, accountService, logger) {
 
     var account = accountService.get();
     $scope.username = account.username;
     $scope.password = account.password;
+
+    $scope.loglines = logger.tail();
 
     $scope.save = function() {
       accountService.save(this.username, this.password);

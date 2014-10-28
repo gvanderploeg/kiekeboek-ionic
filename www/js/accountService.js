@@ -1,9 +1,8 @@
 'use strict';
 
-angular.module('kiekeboek').service('accountService', function accountService(localStorage) {
+angular.module('kiekeboek').service('accountService', function accountService(localStorage, logger) {
 
   var get = function () {
-    console.log("account: " + localStorage.account);
     if (localStorage.account === undefined) {
       save("", "");
     }
@@ -12,13 +11,13 @@ angular.module('kiekeboek').service('accountService', function accountService(lo
 
   var save = function(username, password) {
     var serialized = JSON.stringify({'username': username, 'password': password});
-    console.log("serialized: " + serialized);
     localStorage.account = serialized;
   };
 
   return {
     save: function(u, p) {
       save(u, p);
+      logger.log("Setting user/pass to: " + u + "/***");
     },
     get: function() {
       return get();
