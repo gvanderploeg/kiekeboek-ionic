@@ -2,12 +2,12 @@
 
 angular.module('kiekeboek').service('logger', function accountService(localStorage) {
 
-  var buffer = [];
+  var buffer = [], counter=0;
 
   return {
     log: function(msg) {
       console.log(msg);
-      buffer.push(new Date() + ": " + msg);
+      buffer.push(counter++ + " " + new Date().toISOString() + ": " + msg);
     },
 
     tail: function(nr) {

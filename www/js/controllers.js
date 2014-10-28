@@ -16,6 +16,7 @@ angular.module('kiekeboek.controllers', [])
 
     $ionicLoading.show({
       template: 'Gegevens ophalen... <i class="icon ion-loading-c"></i>',
+      duration: 20000
     });
 
     personService.all(function(persons) {
@@ -47,14 +48,17 @@ angular.module('kiekeboek.controllers', [])
     }
 
     $scope.call = function() {
-      logger.log("Calling " + this.person.mobiel);
-      $window.open('tel:' + $scope.normalizePhoneNr(this.person.mobiel), '_system');
+      var nr = $scope.normalizePhoneNr(this.person.mobiel);
+      logger.log("Calling " + nr);
+      var result = $window.open('tel:' + nr, '_system');
+            logger.log("window.open: " + result);
       return false;
     };
     $scope.text = function() {
-      logger.log("Texting " + this.person.mobiel);
-      $window.open('sms:' + $scope.normalizePhoneNr(this.person.mobiel), '_system');
-      return false;
+            var nr = $scope.normalizePhoneNr(this.person.mobiel);
+            logger.log("Texting " + nr);
+            $window.open('sms:' + nr, '_system');
+            return false;
     };
 })
 .controller('AccountCtrl', function ($scope, $stateParams, accountService, logger) {

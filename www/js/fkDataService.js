@@ -57,7 +57,12 @@ angular.module('kiekeboek').service('fkDataService', ['$http', 'accountService',
       $http.get(url)
         .success(function (response) {
           logger.log("successfully called " + url);
-          callback(response.data);
+          logger.log("typeof data: " + typeof response.data);
+          if (typeof response === 'object' && response.data) {
+            callback(response.data);
+          } else {
+              callback([]);
+          }
         })
         .error(function(data, status, headers, config) {
           logHttpError(url, data, status, headers, config);

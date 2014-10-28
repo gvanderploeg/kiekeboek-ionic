@@ -65,7 +65,6 @@ angular.module('kiekeboek.services', [])
       withdata(function() {
         callback(personsMap[personId]);
       });
-      }
     }
   }
 }]);

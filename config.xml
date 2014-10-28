@@ -20,7 +20,10 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
-
+  <feature name="InAppBrowser">
+      <param name="ios-package" value="CDVInAppBrowser" />
+  </feature>
+  
   <platform name="android">
     <icon src="icons/android/mdpi.png" density="mdpi" />
     <icon src="icons/android/ldpi.png" density="ldpi" />
