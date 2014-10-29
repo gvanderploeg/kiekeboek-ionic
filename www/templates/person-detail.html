@@ -1,7 +1,7 @@
 <ion-view>
   <ion-content has-header="true" padding="true">
 
-    <div class="list card">
+    <div class="card">
 
       <div class="item item-thumbnail-left">
         <img ng-src="http://www.fonteinkerkhaarlem.nl/intranet/photos/show_thumb/{{person.persoonid}}">
@@ -17,12 +17,12 @@
           <i class="icon ion-pinpoint"></i> <span>{{person.straat}}, {{person.postcode}} {{person.plaats}}</span>
       </div>
       <div class="item item-icon-left">
-          <i class="icon ion-calendar"></i> {{person.geboortedatum}}
+          <i class="icon ion-calendar"></i> {{person.geboortedatumFormatted}} ({{person.age}} jaar)
       </div>
       <div class="item item-icon-left">
           <i class="icon ion-email"></i> {{person.emailadres}}
       </div>
-      <div class="item item-icon-left">
+      <div class="item item-icon-left item-text-wrap">
           <i class="icon ion-person-stalker"></i> Kleine groep: {{person.kleine_groep}}
       </div>
 

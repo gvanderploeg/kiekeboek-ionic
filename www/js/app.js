@@ -50,7 +50,7 @@ angular.module('kiekeboek', ['ionic', 'kiekeboek.controllers', 'kiekeboek.servic
       views: {
         'tab-search': {
           templateUrl: 'templates/person-detail.html',
-          controller: 'PersonCtrl'
+          controller: 'PersonDetailCtrl'
         }
       }
     })

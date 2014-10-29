@@ -1,5 +1,4 @@
 angular.module('kiekeboek.controllers', [])
-
 .controller('SearchCtrl', function($scope, personService, $ionicLoading, logger) {
 
     $scope.search = {};
@@ -24,42 +23,6 @@ angular.module('kiekeboek.controllers', [])
       $ionicLoading.hide();
     });
 
-})
-
-
-.controller('PersonCtrl', function($scope, $stateParams, personService, $window, logger) {
-
-    personService.get($stateParams.id, function(person) {
-      $scope.person = person;
-
-    });
-
-    $scope.normalizePhoneNr = function (nr) {
-      if (typeof nr === undefined || nr === '') {
-        return undefined;
-      }
-
-      if (/^0[^0]/.test(nr)) {
-        nr = nr.replace(/^0/, '+31');
-      } else {
-        nr = '+3123' + nr;
-      }
-      return nr;
-    }
-
-    $scope.call = function() {
-      var nr = $scope.normalizePhoneNr(this.person.mobiel);
-      logger.log("Calling " + nr);
-      var result = $window.open('tel:' + nr, '_system');
-            logger.log("window.open: " + result);
-      return false;
-    };
-    $scope.text = function() {
-            var nr = $scope.normalizePhoneNr(this.person.mobiel);
-            logger.log("Texting " + nr);
-            $window.open('sms:' + nr, '_system');
-            return false;
-    };
 })
 .controller('AccountCtrl', function ($scope, $stateParams, accountService, logger) {
 
