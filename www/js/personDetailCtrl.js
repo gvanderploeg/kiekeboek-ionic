@@ -42,6 +42,14 @@ angular.module('kiekeboek.controllers')
       return nr;
     };
 
+    $scope.email = function() {
+      var emailAddress = this.person.emailadres;
+      logger.log("Emailing " + emailAddress);
+      var result = $window.open('mailto:' + emailAddress, '_system');
+      logger.log("window.open: " + result);
+      return false;
+    }
+
     $scope.call = function () {
       var nr = $scope.normalizePhoneNr(this.person.mobiel);
       logger.log("Calling " + nr);

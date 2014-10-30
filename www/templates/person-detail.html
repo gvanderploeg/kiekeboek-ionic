@@ -19,14 +19,14 @@
       <div class="item item-icon-left">
           <i class="icon ion-calendar"></i> {{person.geboortedatumFormatted}} ({{person.age}} jaar)
       </div>
-      <div class="item item-icon-left">
+      <div class="item item-icon-left" ng-click="email()">
           <i class="icon ion-email"></i> {{person.emailadres}}
       </div>
       <div class="item item-icon-left item-text-wrap">
           <i class="icon ion-person-stalker"></i> Kleine groep: {{person.kleine_groep}}
       </div>
 
-      <div class="item tabs tabs-secondary tabs-icon-top">
+      <div class="item tabs tabs-secondary tabs-icon-top ">
         <a class="tab-item" ng-click="call()">
           <i class="icon ion-ios7-telephone"></i>
           Bel mobiel

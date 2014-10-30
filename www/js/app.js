@@ -5,7 +5,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('kiekeboek', ['ionic', 'kiekeboek.controllers', 'kiekeboek.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $state, $ionicPopup, accountService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,7 +17,19 @@ angular.module('kiekeboek', ['ionic', 'kiekeboek.controllers', 'kiekeboek.servic
       StatusBar.styleDefault();
     }
   });
-})
+
+    // Redirect to account page if no account set
+    $rootScope.$on('$stateChangeStart',
+      function(event, toState){
+        console.log('state change, toState: ');
+        console.log(toState);
+        if (toState.name !== 'tab.account' && !accountService.get().username) {
+          $ionicPopup.alert({'title': 'Accountgegevens ontbreken', template: 'Stel uw accountgegevens in (waarmee u ook inlogt op het intranet van de Fonteinkerk)'}).then(function() {
+            $state.go('tab.account');
+          });
+        }
+      })
+  })
 
 .config(function($stateProvider, $urlRouterProvider) {
 

@@ -23,16 +23,4 @@ angular.module('kiekeboek.controllers', [])
       $ionicLoading.hide();
     });
 
-})
-.controller('AccountCtrl', function ($scope, $stateParams, accountService, logger) {
-
-    var account = accountService.get();
-    $scope.username = account.username;
-    $scope.password = account.password;
-
-    $scope.loglines = logger.tail();
-
-    $scope.save = function() {
-      accountService.save(this.username, this.password);
-    }
 });
