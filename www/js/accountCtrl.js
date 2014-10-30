@@ -1,5 +1,5 @@
 angular.module('kiekeboek.controllers')
-  .controller('AccountCtrl', function ($scope, $stateParams, accountService, logger) {
+  .controller('AccountCtrl', function ($scope, $stateParams, accountService, logger, fkDataService) {
 
     var account = accountService.get();
     var isDirty = false;
@@ -12,5 +12,6 @@ angular.module('kiekeboek.controllers')
 
     $scope.save = function () {
       accountService.save(this.username, this.password);
+      fkDataService.resetLogin();
     }
   });
