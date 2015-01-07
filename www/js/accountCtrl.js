@@ -7,9 +7,6 @@ angular.module('kiekeboek.controllers')
     $scope.username = account.username;
     $scope.password = account.password;
 
-    $scope.loglines = logger.tail();
-
-
     $scope.save = function () {
       accountService.save(this.username, this.password);
       fkDataService.resetLogin();
