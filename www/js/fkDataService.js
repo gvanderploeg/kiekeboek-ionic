@@ -50,7 +50,7 @@
           }).error(function(data, status, headers, config) {
             logHttpError(loginUrl, data, status, headers, config);
           });
-        }).error(function() {
+        }).error(function(data, status, headers, config) {
           logger.log('logout error, will log: ' + status);
           logHttpError('logout', data, status, headers, config);
         });
